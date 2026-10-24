@@ -65,34 +65,48 @@ Turn this daily workflow:
 ## System Architecture
 
 ```
-┌─────────────────────────────────────────────────────┐
-│                    Frontend (PWA)                   │
-│  React 18 + Vite 5 + vite-plugin-pwa                │
-│                                                     │
-│  ┌─────────────┐  ┌──────────────┐  ┌────────────┐  │
-│  │  Dashboard  │  │   Products   │  │ Characters │  │
-│  └─────────────┘  └──────────────┘  └────────────┘  │
-│  ┌─────────────┐  ┌──────────────┐                  │
-│  │    Queue    │  │  Bottom Nav  │                  │
-│  └─────────────┘  └──────────────┘                  │
-└──────────────────────────┬──────────────────────────┘
-                           │
-                           ▼
-┌─────────────────────────────────────────────────────┐
-│                   Storage Layer                     │
-│  • localStorage  → products, characters, jobs       │
-│  • IndexedDB     → generated stills                 │
-└──────────────────────────┬──────────────────────────┘
-                           │
-                           ▼
-┌─────────────────────────────────────────────────────┐
-│               AI Layer (src/ai.js)                  │
-│  Currently stubs. Ready for real APIs:              │
-│  • importProduct()                                  │
-│  • generateStill()     ← Flux / SD3 + FaceID        │
-│  • generateVideo()     ← Kling / Seedance / Runway  │
-│  • makeCaption()                                    │
-└─────────────────────────────────────────────────────┘
+## System Architecture
+
+```mermaid
+flowchart TB
+    subgraph Frontend["Frontend (PWA)"]
+        direction TB
+        UI["React 18 + Vite 5 + vite-plugin-pwa"]
+        
+        subgraph Screens["Screens"]
+            direction LR
+            D[Dashboard]
+            P[Products]
+            C[Characters]
+            Q[Queue]
+        end
+        
+        Nav[Bottom Navigation]
+    end
+
+    subgraph Storage["Storage Layer"]
+        LS[(localStorage<br/>products • characters • jobs)]
+        IDB[(IndexedDB<br/>generated stills)]
+    end
+
+    subgraph AI["AI Layer — src/ai.js"]
+        direction TB
+        IP[importProduct]
+        GS[generateStill]
+        GV[generateVideo]
+        MC[makeCaption]
+    end
+
+    Frontend --> Storage
+    Frontend --> AI
+
+    GS -.->|Future| Flux["Flux / SD3 + FaceID"]
+    GV -.->|Future| Kling["Kling / Seedance / Runway"]
+
+    style Frontend fill:#2B1530,stroke:#E8467C,color:#FBE3EA
+    style Storage fill:#FBE3EA,stroke:#E8467C,color:#2B1530
+    style AI fill:#FCE4EC,stroke:#C42F63,color:#2B1530
+    style Screens fill:#3D1F45,stroke:#E8467C,color:#FBE3EA
 ```
 
 ---
