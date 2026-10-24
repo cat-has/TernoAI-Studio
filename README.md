@@ -1,4 +1,4 @@
-```markdown
+
 # TernoAI Studio
 
 <p align="center">
