@@ -1,5 +1,3 @@
-Here’s a complete, production-style `README.md` you can use:
-
 ```markdown
 # TernoAI Studio
 
