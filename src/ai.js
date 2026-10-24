@@ -1,5 +1,5 @@
-// ALL AI CALLS LIVE HERE. Each function is a stub. Replace the body with a real API call.
-// Keep API keys on a small backend or serverless function, never in this client bundle.
+// ALL AI CALLS LIVE HERE. Every function is a stub.
+// Keep API keys on a backend or serverless function. Never put them in this client bundle.
 
 export const POSES = ['Twirl', 'Walk', 'Pose on pink set', 'Mirror try-on', 'Dance']
 
@@ -17,27 +17,29 @@ const placeholder = (label, sub) =>
     </svg>`
   )
 
-// TODO: fetch product details from a link. TikTok Shop has no open scraping endpoint;
-// use your own backend, the TikTok Shop Partner API, or keep manual entry.
+/* TODO(importProduct): resolve a TikTok Shop link to { title, price, image }.
+   No open scraping endpoint exists. Use your own backend, the TikTok Shop Partner API, or keep manual entry. */
 export async function importProduct(link) {
   await sleep(500)
   return { title: '', price: '', image: '' }
 }
 
-// TODO: call an image model with the locked character + product image.
-// Pass character.seed and character.description for consistency.
+/* TODO(generateStill): call an image model (Flux, SD3 with IP-Adapter, etc.) through your backend.
+   Send character.description, character.seed, character.refs (synthetic reference image URLs),
+   product.image and the pose. Return a data URL or image URL. */
 export async function generateStill({ character, product, pose }) {
   await sleep(1200)
   return placeholder(product.title || 'Product', `${character.name} - ${pose}`)
 }
 
-// TODO: call an image-to-video model with the approved still. Return a playable URL.
+/* TODO(generateVideo): call an image-to-video model (Kling, Seedance, Runway, Luma) through your backend.
+   Send the approved still and the pose. Return { url, note } with a 9:16 clip URL. */
 export async function generateVideo({ still, pose }) {
   await sleep(1500)
-  return { url: null, note: 'Video stub. Plug in your video API in src/ai.js' }
+  return { url: '', note: 'Video stub. Plug in your video API in src/ai.js' }
 }
 
-// TODO: swap for an LLM call if you want better copy. The AI label stays in.
+/* TODO(makeCaption): optionally swap for an LLM call. Keep the AI-generated label in every caption. */
 export function makeCaption(product) {
   const name = product.title || 'this outfit'
   return [

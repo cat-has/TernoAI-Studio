@@ -28,3 +28,7 @@ nav button.on{background:var(--ink);color:var(--blush)}
 .chip.generating{background:#FFE08A}.chip.done{background:var(--mint)}.chip.failed{background:#F5A3A3}
 .empty,.note{font-size:.9rem;opacity:.8}.err{color:#B3261E}.ok{color:#1B7A4B;font-weight:700;margin:0}
 @media (prefers-reduced-motion:no-preference){button{transition:background .15s}}
+.stat{align-items:flex-start}.stat strong{font-size:2.6rem;line-height:1}
+.chips{display:flex;gap:8px;flex-wrap:wrap}
+.row{display:flex;gap:10px;align-items:flex-end}.row>*{flex:1}
+button.link{background:none;color:var(--rose-d);padding:0;min-height:0;text-decoration:underline;border-radius:0}
