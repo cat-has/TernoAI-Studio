@@ -64,8 +64,6 @@ Turn this daily workflow:
 
 ## System Architecture
 
-```
-## System Architecture
 
 ```mermaid
 flowchart TB
