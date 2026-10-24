@@ -1,4 +1,83 @@
-<!doctype html>
-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Offline - TernoAI Studio</title>
-<style>body{margin:0;display:grid;place-items:center;min-height:100vh;background:#FBE3EA;color:#2B1530;font-family:"Trebuchet MS",system-ui,sans-serif;text-align:center;padding:24px}</style></head>
-<body><div><h1>You are offline</h1><p>Reconnect to load TernoAI Studio, then it will work offline next time.</p></div></body></html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#2B1530" />
+  <title>Offline – TernoAI Studio</title>
+  <style>
+    :root {
+      --ink: #2B1530;
+      --blush: #FBE3EA;
+      --rose: #E8467C;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: "Trebuchet MS", "Segoe UI", system-ui, sans-serif;
+      background: var(--blush);
+      color: var(--ink);
+      min-height: 100dvh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      text-align: center;
+    }
+
+    .card {
+      background: white;
+      border-radius: 24px;
+      padding: 40px 28px;
+      max-width: 340px;
+      width: 100%;
+      box-shadow: 0 12px 40px rgba(43, 21, 48, 0.1);
+    }
+
+    .icon {
+      font-size: 52px;
+      margin-bottom: 16px;
+    }
+
+    h1 {
+      font-size: 1.4rem;
+      margin-bottom: 10px;
+    }
+
+    p {
+      font-size: 0.95rem;
+      opacity: 0.75;
+      line-height: 1.5;
+      margin-bottom: 28px;
+    }
+
+    button {
+      background: linear-gradient(135deg, #E8467C, #C42F63);
+      color: white;
+      border: none;
+      border-radius: 999px;
+      padding: 14px 28px;
+      font-size: 1rem;
+      font-weight: 700;
+      cursor: pointer;
+      box-shadow: 0 6px 20px rgba(232, 70, 124, 0.35);
+    }
+
+    button:active {
+      transform: scale(0.98);
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div class="icon">📡</div>
+    <h1>You’re offline</h1>
+    <p>
+      TernoAI Studio needs an internet connection to generate new videos.
+      You can still view previously created items when you’re back online.
+    </p>
+    <button onclick="location.reload()">Try again</button>
+  </div>
+</body>
+</html>
